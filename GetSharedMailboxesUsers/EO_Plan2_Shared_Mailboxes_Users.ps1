@@ -2,7 +2,7 @@
 $UserCredential = Get-Credential
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
 Import-PSSession $Session
-Connect-MsolService -Credential $credential
+Connect-MsolService -Credential $UserCredential
 
 #Get all the users with Exchange Online Plan 2 license
 $email_account = Get-MsolUser | Where-Object { $_.Licenses.AccountSKUid -eq 'corpepals:EXCHANGEENTERPRISE' } | select DisplayName, SignInName 
